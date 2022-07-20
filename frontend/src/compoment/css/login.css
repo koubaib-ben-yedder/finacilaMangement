@@ -1,0 +1,23 @@
+.login{
+    background-image:url("../../image/login.jpg");
+    background-size:cover;
+    height:42rem;
+    display:flex;
+    justify-content:center;
+    
+}
+.login-content{
+
+    margin-top: 5rem;
+    padding-top:5rem;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    height: 40%;
+
+}
+.login-content-footer{
+
+    display:flex;
+    justify-content:space-evenly;
+}

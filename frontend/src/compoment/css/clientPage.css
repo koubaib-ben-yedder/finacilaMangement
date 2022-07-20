@@ -1,0 +1,13 @@
+.card-body {
+    background: #748DA6;
+    color: #F2D7D9;
+}
+.card-header {
+    background: #F2D7D9!important;;
+    color: #9CB4CC;
+}
+
+.navbar-dark .navbar-brand {
+    color: #F2D7D9!important;
+}
+

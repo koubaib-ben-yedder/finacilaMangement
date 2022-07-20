@@ -1,0 +1,28 @@
+nav.navbar.navbar-expand.navbar-dark.bg-primary {
+    background: #748DA9!important;
+}
+tr {
+    color: #748DA6;
+    background: #F2D7D9;
+}
+tbody {
+    color: #748DA6;
+}
+a.nav-link {
+    color: #F2D7D9!important;
+}
+navbar-dark .navbar-brand {
+    color: #F2D7D9!important;
+}
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    
+    color: #748DA6!important;
+}
+.CustomNavbar{
+    
+    position: sticky;
+    background:black;
+}
+.navbar-dark .navbar-brand {
+    color: #F2D7D9;
+}

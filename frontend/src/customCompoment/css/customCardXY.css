@@ -1,0 +1,42 @@
+.customCardXY-header{
+    
+  
+    bottom:1rem;
+    display:flex;
+   
+    gap:1rem;
+    justify-content:space-evenly;
+    
+}
+.customCardXY-header{
+    
+    display: flex;
+  justify-content: space-evenly;
+}
+.customCardXY-body{
+    display:flex;
+    flex-direction:row;
+   
+}
+.customCardXY-body-left {
+    margin-top: 2rem;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.customCardXY-icon-add{
+    position:fixed;
+    bottom:1rem;
+    right: 1rem;
+  
+}
+.CustomCardY-card-image{
+    width:10rem;
+    height:10rem;
+    
+}
+i.fas.fa-plus-circle {
+    
+    color:#9CB4CC;
+}

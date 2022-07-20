@@ -1,0 +1,32 @@
+.main-page-content{
+
+    display:grid;
+    grid-template-columns: repeat(2,auto);
+    grid-template-rows: repeat(2,auto);
+    margin: 5rem;
+    gap: 2.6rem;
+    
+}
+.react-calendar {
+    /* width: 100%!important; */
+
+}
+
+
+
+.react-calendar {
+    width: 100%!important;
+    height: 100%;
+   
+}
+
+
+
+.card {
+    margin: 1rem;
+}
+.accordion-collapse.collapse.show {
+    overflow-y: scroll;
+    min-width: 40rem;
+
+}

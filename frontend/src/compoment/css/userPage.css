@@ -1,0 +1,40 @@
+
+.user {
+    background-image: url(https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
+    height: 42rem;
+    position:static;
+}
+.user-content{
+
+    position:relative;
+    bottom:-20%;
+    left:30%;
+    display: flex;
+    justify-content:space-evenly;
+    flex-direction:column;
+    height:25rem;
+    color:white;
+    
+    
+
+
+}
+.user-content-firstName,.user-content-lastName,.user-content-age,.user-content-email,.user-content-password{
+
+    display:flex;
+    gap:5rem;
+    color:#748DA6;
+    box-shadow: -4px 3px 0px 0px #e0c7c9;
+    width: fit-content;
+
+}
+.user-conetnt-icon{
+    color:#748DA6;
+    position:fixed;
+    bottom:2rem;
+    right:2rem;
+    display:flex;
+    justify-content:space-around;
+  
+    width: 10rem;
+}

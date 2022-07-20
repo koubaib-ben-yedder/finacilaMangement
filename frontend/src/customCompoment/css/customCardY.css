@@ -1,0 +1,20 @@
+.customCardY-card-body{
+
+    display:flex;
+    justify-content: space-between;
+
+}
+
+.customCardY-card-body-image{
+
+    width: 50%;
+}
+
+.customCardY-card-image {
+    width: 100% !important;
+ 
+    
+    height: 12rem !important;
+    /* height: 58%; */
+    /* background-size: cover; */
+}
