@@ -120,7 +120,7 @@ const getClient=async()=>{
             <Accordion.Item eventKey="0">
               <Accordion.Header>Income To Have</Accordion.Header>
               <Accordion.Body>
-                <CustomCardX data={income}/>
+                {income!=[]?<CustomCardX data={income}/>:""}
 
               </Accordion.Body>
             </Accordion.Item>

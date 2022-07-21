@@ -117,7 +117,7 @@ const Client = () => {
     }
   return (
     <div>
-      <CustomCardXY field={["firstname","lastname","age","job"]} del={del} add={add} data={data} update={update} find={find} y={3}/>
+      <CustomCardXY field={["firstname","lastname","age","job"]} del={del} add={add} data={data!=[]?data:""} update={update} find={find} y={3}/>
       <CustomModal id={id} choix={"Client"}oneData={oneData} />
 
     </div>
