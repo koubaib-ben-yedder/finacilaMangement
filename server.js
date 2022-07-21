@@ -24,7 +24,7 @@ app.use("/income",authentication,incomeRouter)
 app.use("/client",authentication,clientRouter)
 app.use("/user",authentication,userRouter)
 app.use("",publicRouter)
-app.set(process.env.port||8000, (process.env.PORT || 5000));
+app.set("port", port);
 app.use('/static', express.static(path.join(__dirname, 'images')))
 console.log(__dirname)
 
@@ -34,7 +34,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-app.listen(port,(e)=>{  
+app.listen(process.env.port||8000,(e)=>{  
     
     if (e) throw e;
     console.log("app work in port ",port)
