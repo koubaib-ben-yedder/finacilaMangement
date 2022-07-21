@@ -30,7 +30,7 @@ console.log(__dirname)
 
  
 if (process.env.NODE_ENV === 'production') {
-    app.get('/*', function (req, res) {
+    app.get('/', function (req, res) {
         res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
       });
     app.use(express.static("fontend/build"))
