@@ -109,7 +109,8 @@ const getClient=async()=>{
             <Accordion.Item eventKey="0">
               <Accordion.Header>Factor To Pay</Accordion.Header>
               <Accordion.Body>
-             
+                <CustomCardY data={factor} />
+
               </Accordion.Body>
             </Accordion.Item>
            
@@ -119,7 +120,8 @@ const getClient=async()=>{
             <Accordion.Item eventKey="0">
               <Accordion.Header>Income To Have</Accordion.Header>
               <Accordion.Body>
-             
+                <CustomCardX data={income}/>
+
               </Accordion.Body>
             </Accordion.Item>
            
@@ -129,7 +131,7 @@ const getClient=async()=>{
               <Accordion.Header>Client</Accordion.Header>
               <Accordion.Body>
               
-             
+                <Client />
               </Accordion.Body>
             </Accordion.Item>
            

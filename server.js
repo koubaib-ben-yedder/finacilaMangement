@@ -18,7 +18,7 @@ setup()
 const port=process.env.port||8000
 app.use(cors())
 
-/*app.use("/edit",authentication,editRouter)
+app.use("/edit",authentication,editRouter)
 app.use("/factor",authentication,factorRouter)
 app.use("/income",authentication,incomeRouter)
 app.use("/client",authentication,clientRouter)
@@ -27,15 +27,15 @@ app.use("",publicRouter)
 app.set("port", port);
 app.use('/static', express.static(path.join(__dirname, 'images')))
 console.log(__dirname)
-*/
 
 
-    app.use(express.static(path.resolve(__dirname, 'frontend','build')))
-    app.get('*', function (req, res) {
-        console.log("----")
-        res.sendFile(path.resolve(__dirname, 'frontend','build', 'index.html'));
-      });
- 
+
+app.use(express.static(path.resolve(__dirname, 'frontend','build')))
+app.get('*', function (req, res) {
+    console.log("----")
+    res.sendFile(path.resolve(__dirname, 'frontend','build', 'index.html'));
+    });
+
 
     
 
