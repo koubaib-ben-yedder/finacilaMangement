@@ -29,7 +29,6 @@ app.use('/static', express.static(path.join(__dirname, 'images')))
 console.log(__dirname)
 */
 
-if(process.env.NODE_ENV === 'production') {
 
     app.use(express.static("frontend/build"))
     app.get('*', function (req, res) {
@@ -38,7 +37,7 @@ if(process.env.NODE_ENV === 'production') {
       });
  
 
-    }
+    
 
 app.listen(process.env.port||8000,(e)=>{  
     
