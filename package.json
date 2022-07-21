@@ -4,14 +4,15 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "node": "v16.15.1"
+    "node": "v16.15.1",
+    "npm":"v8.11.0"
   
   },
   "scripts": {
     "start": "node server",
   
   
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false  npm install --prefix cd frontend && npm install && npm run build " 
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false  npm install --prefix frontend  && npm run build --prefix frontend " 
   },
   "author": "",
   "license": "ISC",

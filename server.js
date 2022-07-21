@@ -18,7 +18,7 @@ setup()
 const port=process.env.port||8000
 app.use(cors())
 
-app.use("/edit",authentication,editRouter)
+/*app.use("/edit",authentication,editRouter)
 app.use("/factor",authentication,factorRouter)
 app.use("/income",authentication,incomeRouter)
 app.use("/client",authentication,clientRouter)
@@ -27,16 +27,18 @@ app.use("",publicRouter)
 app.set("port", port);
 app.use('/static', express.static(path.join(__dirname, 'images')))
 console.log(__dirname)
+*/
 
- 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static("fontend/build"))
+if(process.env.NODE_ENV === 'production') {
+
+    app.use(express.static("frontend/build"))
     app.get('*', function (req, res) {
+        console.log("----")
         res.sendFile(path.resolve(__dirname, 'frontend','build', 'index.html'));
       });
  
-}
 
+    }
 
 app.listen(process.env.port||8000,(e)=>{  
     
