@@ -109,7 +109,7 @@ const getClient=async()=>{
             <Accordion.Item eventKey="0">
               <Accordion.Header>Factor To Pay</Accordion.Header>
               <Accordion.Body>
-                <CustomCardY data={factor} />
+                {factor!=[]?<CustomCardY data={factor} />:""}
 
               </Accordion.Body>
             </Accordion.Item>
