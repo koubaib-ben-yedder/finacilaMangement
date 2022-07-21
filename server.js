@@ -28,8 +28,11 @@ app.set("port", port);
 app.use('/static', express.static(path.join(__dirname, 'images')))
 console.log(__dirname)
 
+ 
 if (process.env.NODE_ENV === 'production') {
-
+    app.get('/*', function (req, res) {
+        res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
+      });
     app.use(express.static("fontend/build"))
 }
 
