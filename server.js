@@ -33,7 +33,7 @@ console.log(__dirname)
 app.use(express.static('frontend/build'))
 app.get('*', function (req, res) {
     console.log("----")
-    return res.sendFile(path.resolve(__dirname, 'frontend','build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'frontend','build', 'index.html'));
     });
 
 
