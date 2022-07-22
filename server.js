@@ -16,7 +16,10 @@ app.use(express.json())
 connect()
 setup()
 const port=process.env.port||8000
-app.use(cors())
+app.use(cors({
+    origin: "https://finacialmanagement.herokuapp.com", 
+    credentials: true,
+}))
 
 app.use("/edit",authentication,editRouter)
 app.use("/factor",authentication,factorRouter)
@@ -30,16 +33,21 @@ console.log(__dirname)
 
 
 
-app.use(express.static('frontend/build'))
-app.get('*', function (req, res) {
-    console.log("----")
-    res.sendFile(path.resolve(__dirname, 'frontend','build', 'index.html'));
-    });
+if(process.env.NODE_ENV !== 'production') {
+
+    app.use(express.static('frontend/build'))
+    app.use(express.static('frontend/public/image'))
+    app.get('*', function (req, res) {
+        console.log("----")
+        res.sendFile(path.resolve(__dirname, 'frontend','build', 'index.html'));
+    })
+}
+
 
 
     
 
-app.listen(process.env.port||8000,(e)=>{  
+app.listen(port,(e)=>{  
     
     if (e) throw e;
     console.log("app work in port ",port)

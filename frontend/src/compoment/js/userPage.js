@@ -24,7 +24,7 @@ const User = () => {
 
         }
       }
-      const {data,status}=await axios.get('http://localhost:5000/user/getOneUser',config)
+      const {data,status}=await axios.get(''+window.location.origin+'/getOneUser',config)
       setData(data)
     
       
@@ -56,7 +56,7 @@ const User = () => {
               }
             }
            localStorage.removeItem("webtoken")
-            await axios.delete(`http://localhost:5000/user/deleteUser`,config)
+            await axios.delete(`${window.location.origin}/user/deleteUser`,config)
          
             dispatch(trigger())
          

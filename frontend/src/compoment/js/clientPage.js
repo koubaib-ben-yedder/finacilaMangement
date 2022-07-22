@@ -23,7 +23,7 @@ const Client = () => {
 
           }
         }
-        const {data}=await axios.get('http://localhost:5000/client/getClient',config)
+        const {data}=await axios.get(''+window.location.origin+'/client/getClient',config)
 
       
         setData(data)
@@ -62,7 +62,7 @@ const Client = () => {
             }
           }
         
-          const {data}=await axios.delete(`http://localhost:5000/client/deleteClient/${id}`,config) 
+          const {data}=await axios.delete(`${window.location.origins}/client/deleteClient/${id}`,config) 
           
           setData(data)
             
@@ -103,7 +103,7 @@ const Client = () => {
             }
           }
         
-          const {data}=await axios.get(`http://localhost:5000/client/getOneclient/${id}`,config)
+          const {data}=await axios.get(`${process.env.baseUrl}/client/getOneclient/${id}`,config)
 
       
           dispatch(display({show:true,page:"View"}))
@@ -117,7 +117,7 @@ const Client = () => {
     }
   return (
     <div>
-      <CustomCardXY field={["firstname","lastname","age","job"]} del={del} add={add} data={data!=[]?data:""} update={update} find={find} y={3}/>
+      <CustomCardXY field={["firstname","lastname","age","job"]} del={del} add={add} data={data!=undefined?data:""} update={update} find={find} y={3}/>
       <CustomModal id={id} choix={"Client"}oneData={oneData} />
 
     </div>

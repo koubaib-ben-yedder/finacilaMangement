@@ -27,7 +27,7 @@ const UserForm= ({handleClose}) => {
               }
               const dataToSend={"firstName":firstName,"lastName":lastName,"email":email,"password":password,"age":age}
               console.log(dataToSend)
-              const {data}=await axios.put(`http://localhost:5000/user/updateUser`,dataToSend,config)
+              const {data}=await axios.put(`${window.location.origin}/user/updateUser`,dataToSend,config)
             
               setData(data)
            

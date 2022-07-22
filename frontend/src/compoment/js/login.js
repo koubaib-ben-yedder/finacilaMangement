@@ -26,7 +26,7 @@ const Login = () => {
         }
         const dataToSend={"email":email,"password":password}
       
-        const {data}=await axios.post(`http://localhost:5000/login`,dataToSend,config)
+        const {data}=await axios.post(`${window.location.origin}/login`,dataToSend,config)
        
         localStorage.setItem("webtoken",data?.msg)
 

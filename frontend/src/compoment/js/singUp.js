@@ -23,12 +23,12 @@ const SingUp = () => {
             
             const config={
                 headers:{
-                    "Content-Type":"application/json"
+                    "Content-Type":"application/json"  
                 }
             }
             const dataToSend={"firstName":firstName,"lastName":lastName,"email":email,"password":password,"age":age}
-            console.log(dataToSend)
-            const {data}=await axios.post(`http://localhost:5000/addUser`,dataToSend,config)
+            console.log(dataToSend,window.location.origin)
+            const {data}=await axios.post(window.location.origin+'/addUser',dataToSend,config)
            
             setData(data)
           

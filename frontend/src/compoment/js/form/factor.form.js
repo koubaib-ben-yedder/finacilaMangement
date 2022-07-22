@@ -38,7 +38,7 @@ const FactorForm = ({id,handleClose}) => {
             dataToSend.append("valueToPay",valueToPay)
             dataToSend.append("remainFactor",remainFactor)
             console.log(descriptionFactor,client,dateFactor,valueToPay,remainFactor,imageFactor)
-           const {data}= await axios.post("http://localhost:5000/factor/addFactor",dataToSend,config)
+           const {data}= await axios.post(""+window.location.origin+"/factor/addFactor",dataToSend,config)
            
             setData(data)
             dispatch(trigger())
@@ -72,7 +72,7 @@ const FactorForm = ({id,handleClose}) => {
             dataToSend.append("valueToPay",valueToPay)
             dataToSend.append("remainFactor",remainFactor)
             console.log(descriptionFactor,client,dateFactor,valueToPay,remainFactor,imageFactor)
-            const {data}=await axios.put(`http://localhost:5000/factor/updateFactor/${id}`,dataToSend,config)
+            const {data}=await axios.put(`${window.location.origin}/factor/updateFactor/${id}`,dataToSend,config)
           
             
             setData(data)

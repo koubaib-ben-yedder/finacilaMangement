@@ -26,7 +26,7 @@ const Main= () => {
 
         }
       }
-      const {data}=await axios.get('http://localhost:5000/income/getIncome',config)
+      const {data}=await axios.get(''+window.location.origin+'/income/getIncome',config)
   
       setIncome(data)
     
@@ -53,7 +53,7 @@ const Main= () => {
         Authorization:localStorage.getItem("webtoken")
       }
     }
-    const {data}=await axios.get("http://localhost:5000/factor/getFactor",config)
+    const {data}=await axios.get(""+window.location.origin+"/factor/getFactor",config)
          
     setFactor(data)
     
@@ -72,7 +72,7 @@ const getClient=async()=>{
 
       }
     }
-    const {data}=await axios.get('http://localhost:5000/client/getClient',config)
+    const {data}=await axios.get(''+window.location.origin+'/client/getClient',config)
 
    
    setClient(data)
@@ -109,7 +109,7 @@ const getClient=async()=>{
             <Accordion.Item eventKey="0">
               <Accordion.Header>Factor To Pay</Accordion.Header>
               <Accordion.Body>
-              
+                {factor!=undefined?<CustomCardY data={factor} />:""}
 
               </Accordion.Body>
             </Accordion.Item>
@@ -120,7 +120,7 @@ const getClient=async()=>{
             <Accordion.Item eventKey="0">
               <Accordion.Header>Income To Have</Accordion.Header>
               <Accordion.Body>
-             
+                {income!=undefined?<CustomCardX data={income}/>:""}
 
               </Accordion.Body>
             </Accordion.Item>
@@ -131,7 +131,7 @@ const getClient=async()=>{
               <Accordion.Header>Client</Accordion.Header>
               <Accordion.Body>
               
-              
+                <Client />
               </Accordion.Body>
             </Accordion.Item>
            
