@@ -16,10 +16,7 @@ app.use(express.json())
 connect()
 setup()
 const port=process.env.port||8000
-app.use(cors({
-    origin: "https://finacialmanagement.herokuapp.com", 
-    credentials: true,
-}))
+app.use(cors())
 
 app.use("/edit",authentication,editRouter)
 app.use("/factor",authentication,factorRouter)
