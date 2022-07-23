@@ -5,14 +5,11 @@
   "main": "index.js",
   "engines": {
     "node": "v16.15.1",
-    "npm":"v8.11.0"
-  
+    "npm": "v8.11.0"
   },
   "scripts": {
     "start": "node server",
-  
-  
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false  npm install --prefix frontend  && npm run build --prefix frontend " 
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false  npm install --prefix frontend  && npm run build --prefix frontend "
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +23,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.1",
     "multer": "^1.4.5-lts.1",
-    "nodemon": "^2.0.18"
+    "nodemon": "^2.0.18",
+    "serve-favicon": "^2.5.0"
   }
 }
