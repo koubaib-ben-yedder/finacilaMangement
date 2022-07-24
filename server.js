@@ -35,8 +35,8 @@ console.log(__dirname)
 if(process.env.NODE_ENV == 'production') {
 
     app.use(express.static('frontend/build'))
-  
-    app.use(express.static('frontend/public/image'))
+    app.use(favicon(path.resolve(__dirname, 'frontend','public', 'favicon.ico')))
+ 
     app.get('*', function (req, res) {
         console.log("----")
         res.sendFile(path.resolve(__dirname, 'frontend','build', 'index.html'));
