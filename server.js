@@ -11,7 +11,6 @@ const userRouter=require("./routes/user.router")
 const publicRouter=require("./routes/public.router")
 const {authentication}=require("./middlewares/authentication/authentication")
 const connect=require("./connect/connectDb")
-var favicon = require('serve-favicon')
 const setup=require("./connect/setup")
 app.use(express.json())
 connect()
@@ -36,7 +35,7 @@ if(process.env.NODE_ENV == 'production') {
 
     app.use(express.static('frontend/build'))
   
-    app.use(favicon(path.resolve(__dirname, 'frontend','favicon.ico', 'favicon.ico')))
+   
  
     app.get('*', function (req, res) {
         console.log("----")
