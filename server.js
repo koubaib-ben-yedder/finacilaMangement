@@ -35,7 +35,7 @@ console.log(__dirname)
 if(process.env.NODE_ENV == 'production') {
 
     app.use(express.static('frontend/build'))
-    app.use(favicon(path.join(__dirname, 'frontend/public', 'favicon.ico')))
+    app.use(favicon(path.resolve(__dirname, 'frontend',"public", 'favicon.ico')))
     app.use(express.static('frontend/public/image'))
     app.get('*', function (req, res) {
         console.log("----")
