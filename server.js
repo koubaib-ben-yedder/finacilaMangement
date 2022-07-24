@@ -11,13 +11,14 @@ const userRouter=require("./routes/user.router")
 const publicRouter=require("./routes/public.router")
 const {authentication}=require("./middlewares/authentication/authentication")
 const connect=require("./connect/connectDb")
+var favicon = require('serve-favicon')
 const setup=require("./connect/setup")
 app.use(express.json())
 connect()
 setup()
 const port=process.env.port||8000
 
-
+app.use(cors())
 app.use("/edit",authentication,editRouter)
 app.use("/factor",authentication,factorRouter)
 app.use("/income",authentication,incomeRouter)
@@ -26,6 +27,7 @@ app.use("/user",authentication,userRouter)
 app.use("",publicRouter)
 app.set("port", port);
 app.use('/static', express.static(path.join(__dirname, 'images')))
+
 console.log(__dirname)
 
 
@@ -33,6 +35,7 @@ console.log(__dirname)
 if(process.env.NODE_ENV == 'production') {
 
     app.use(express.static('frontend/build'))
+    app.use(favicon(path.join(__dirname, 'frontend/public', 'favicon.ico')))
     app.use(express.static('frontend/public/image'))
     app.get('*', function (req, res) {
         console.log("----")
