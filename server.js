@@ -36,7 +36,7 @@ if(process.env.NODE_ENV == 'production') {
 
     app.use(express.static('frontend/build'))
   
-    app.use(favicon(path.resolve(__dirname, 'frontend','public', 'favicon.ico')))
+    app.use(favicon(path.resolve(__dirname, 'frontend','favicon.ico', 'favicon.ico')))
  
     app.get('*', function (req, res) {
         console.log("----")
