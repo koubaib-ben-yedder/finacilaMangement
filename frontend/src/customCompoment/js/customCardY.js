@@ -45,7 +45,7 @@ const CustomCardY=({data})=> {
         </Card.Footer>
           </Card>
       
-      )):""}
+      )):<>{data?.msg}</>}
  </div>
   );
 }

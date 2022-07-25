@@ -41,7 +41,7 @@ const customCardX = ({data}) => {
            </Card.Footer>
          </Card>
          </CardGroup>
-        )):""}
+        )):<>{data?.msg}</>}
        
     
   
