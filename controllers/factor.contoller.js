@@ -47,7 +47,7 @@ exports.getFactor = async (req, res) => {
       
      
     }else{
-      return res.status(400).send({msg:"factor is empty"})
+      return res.status(200).send({msg:"factor is empty"})
     }
    
   } catch (error) {

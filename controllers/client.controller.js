@@ -65,7 +65,7 @@ exports.getClient = async (req, res) => {
       else {
       //send error message to the fontend
 
-      return res.status(400).send({ msg: "client is empty" });
+      return res.status(200).send({ msg: "client is empty" });
     }
   } catch (error) {
     //send a server error message

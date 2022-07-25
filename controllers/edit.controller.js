@@ -55,7 +55,7 @@ exports.getEdit = async (req, res) => {
       }
    
      else {
-      return res.status(400).send({ msg: "edit is empty" });
+      return res.status(200).send({ msg: "edit is empty" });
     }
   } catch (error) {
     return res.status(500).send(error);

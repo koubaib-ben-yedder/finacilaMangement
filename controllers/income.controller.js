@@ -51,7 +51,7 @@ exports.getIncome=async(req,res)=>{
                 return res.status(200).send(incomeTable)
             
         }else{
-            return res.status(400).send({msg:"income is empty"})
+            return res.status(200).send({msg:"income is empty"})
         }
        
 
