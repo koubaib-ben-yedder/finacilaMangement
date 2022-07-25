@@ -23,7 +23,7 @@ const Client = () => {
 
           }
         }
-        const {data}=await axios.get(''+window.location.origin+'/client/getClient',config)
+        const {data}=await axios.get(window.location.origin+'/client/getClient',config)
 
       
         setData(data)
@@ -62,7 +62,7 @@ const Client = () => {
             }
           }
         
-          const {data}=await axios.delete(`${window.location.origins}/client/deleteClient/${id}`,config) 
+          const {data}=await axios.delete(window.location.origins+"/client/deleteClient/"+id,config) 
           
           setData(data)
             
@@ -103,7 +103,7 @@ const Client = () => {
             }
           }
         
-          const {data}=await axios.get(`${process.env.baseUrl}/client/getOneclient/${id}`,config)
+          const {data}=await axios.get(window.location.origin+"/client/getOneclient/"+id,config)
 
       
           dispatch(display({show:true,page:"View"}))

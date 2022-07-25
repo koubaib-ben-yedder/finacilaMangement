@@ -38,7 +38,7 @@ const IncomeForm = ({handleClose,id}) => {
           }
           setPaly(1)
           const dataToSend={"nameIncome":nameIncome,"descriptionIncome":descriptionIncome,"dateIncome":dateIncome,"manyToHave":manyToHave,"remainIncome":remainIncome}
-          const {data}=await axios.post(`${window.location.origin}/income/addIncome`,dataToSend,config)
+          const {data}=await axios.post(window.location.origin+"/income/addIncome",dataToSend,config)
           setData(data)
         
   
@@ -70,7 +70,7 @@ const IncomeForm = ({handleClose,id}) => {
           }
           setPaly(1)
           const dataToSend={"nameIncome":nameIncome,"descriptionIncome":descriptionIncome,"dateIncome":dateIncome,"valueToPay":manyToHave,"remainIncome":remainIncome}
-          const {data}=await axios.put(`${window.location.origin}/income/updateIncome/${id}`,dataToSend,config)
+          const {data}=await axios.put(window.location.origin+"/income/updateIncome/"+id,dataToSend,config)
         setData(data)
         dispatch(trigger())
       

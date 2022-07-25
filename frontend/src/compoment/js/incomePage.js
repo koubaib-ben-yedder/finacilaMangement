@@ -69,7 +69,7 @@ const Income = () => {
           }
         }
       
-       const {data,status}=await axios.delete(`${window.location.origin}/income/deleteIncome/${id}`,config)
+       const {data,status}=await axios.delete(window.location.origin+"/income/deleteIncome/"+id,config)
       
       
         dispatch(trigger())
@@ -113,7 +113,7 @@ const Income = () => {
           }
         }
       
-        const {data,status}=await axios.get(`${window.location.origin}/income/getOneIncome/${id}`,config)
+        const {data,status}=await axios.get(window.location.origin+"/income/getOneIncome/"+id,config)
         
         setOneData(data)
         dispatch(display({show:true,page:"View"}))

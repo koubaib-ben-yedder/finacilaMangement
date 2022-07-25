@@ -30,7 +30,7 @@ const Factor = () => {
         }
       }
      
-      const {data}=await axios.get(""+window.location.origin+"/factor/getFactor",config)
+      const {data}=await axios.get(window.location.origin+"/factor/getFactor",config)
    
       setData(data)
     } catch (error) {
@@ -68,7 +68,7 @@ const Factor = () => {
               }
             }
           
-            const {data}=await axios.delete(`${window.location.origin}/factor/deleteFactor/${id}`,config)
+            const {data}=await axios.delete(window.location.origin+"/factor/deleteFactor/"+id,config)
             setData(data)
            
             dispatch(trigger())
@@ -96,7 +96,7 @@ const Factor = () => {
           }
         }
       
-        const {data}=await axios.get(`${window.location.origin}/factor/getOneFactor/${id}`,config)
+        const {data}=await axios.get(window.location.origin+"/factor/getOneFactor/"+id,config)
       
         dispatch(display({show:true,page:"View"}))
         setOneData(data)

@@ -26,7 +26,7 @@ const Main= () => {
 
         }
       }
-      const {data}=await axios.get(''+window.location.origin+'/income/getIncome',config)
+      const {data}=await axios.get(window.location.origin+'/income/getIncome',config)
   
       setIncome(data)
     
@@ -53,7 +53,7 @@ const Main= () => {
         Authorization:localStorage.getItem("webtoken")
       }
     }
-    const {data}=await axios.get(""+window.location.origin+"/factor/getFactor",config)
+    const {data}=await axios.get(window.location.origin+"/factor/getFactor",config)
          
     setFactor(data)
     
@@ -72,7 +72,7 @@ const getClient=async()=>{
 
       }
     }
-    const {data}=await axios.get(''+window.location.origin+'/client/getClient',config)
+    const {data}=await axios.get(window.location.origin+'/client/getClient',config)
 
    
    setClient(data)

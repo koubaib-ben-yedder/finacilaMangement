@@ -56,7 +56,7 @@ const User = () => {
               }
             }
            localStorage.removeItem("webtoken")
-            await axios.delete(`${window.location.origin}/user/deleteUser`,config)
+            await axios.delete(window.location.origin+"/user/deleteUser",config)
          
             dispatch(trigger())
          

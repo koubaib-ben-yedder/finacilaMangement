@@ -28,7 +28,7 @@ const ClientForm = ({id,handleClose}) => {
             }
             const dataToSend={"firstName":firstName,"lastName":lastName,"age":age,"job":job}
             console.log(dataToSend)
-           const {data}= await axios.post(""+window.location.origin+"/client/addClient",dataToSend,config)
+           const {data}= await axios.post(window.location.origin+"/client/addClient",dataToSend,config)
        
             dispatch(trigger())
             console.log(triggerVariable)
@@ -58,7 +58,7 @@ const ClientForm = ({id,handleClose}) => {
             
             const dataToSend={"firstName":firstName,"lastName":lastName,"age":age,"job":job}
 
-            const {data}=await axios.put(`${window.location.origin}/client/updateClient/${id}`,dataToSend,config)
+            const {data}=await axios.put(window.location.origin+"/client/updateClient/"+id,dataToSend,config)
             
             dispatch(trigger())
          
