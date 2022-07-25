@@ -45,6 +45,11 @@ const Client = () => {
       getClient()
 
     },[varaibleTrigger])
+    useEffect(()=>{
+
+      getClient()
+
+    },[])
     const dispatch=useDispatch()
     const del=async(e,id)=>{
       

@@ -31,8 +31,8 @@ const Income = () => {
 
         }
       }
-      const {data}=await axios.get(''+window.location.origin+'/income/getIncome',config)
-      console.log(await axios.get('http://localhost:5000/income/getIncome',config))
+      const {data}=await axios.get(window.location.origin+'/income/getIncome',config)
+     
    
      setData(data)
      
@@ -52,6 +52,11 @@ const Income = () => {
     getIncomeData()
  
   },[varaibleTrigger])
+  useEffect(()=>{
+
+    getIncomeData()
+ 
+  },[])
   const dispatch=useDispatch()
   const del=async(e,id)=>{
     console.log("delete income",id)

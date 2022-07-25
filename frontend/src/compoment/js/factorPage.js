@@ -43,6 +43,9 @@ const Factor = () => {
   useEffect(()=>{
     getFactorData()
   },[triggerVariable])
+  useEffect(()=>{
+    getFactorData()
+  },[])
   const add=()=>{
   
     dispatch(display({show:true,page:"Factor"}))
