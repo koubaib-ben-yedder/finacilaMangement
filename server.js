@@ -47,7 +47,7 @@ if(process.env.NODE_ENV == 'production') {
 
     
 
-app.listen(process.env.port||8000,(e)=>{  
+app.listen(process.env.PORT||8000,(e)=>{  
 
     if (e) throw e;
     console.log("app work in port ",port)
