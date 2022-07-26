@@ -2,6 +2,7 @@ const express=require("express")
 const app=express()
 const cors=require("cors")
 const path =require("path")
+const cloudinary = require('cloudinary').v2;
 require("dotenv").config()
 const editRouter=require("./routes/edit.router")
 const factorRouter=require("./routes/factor.router")
@@ -28,7 +29,6 @@ app.set("port", port);
 app.use('/static', express.static(path.join(__dirname, 'images')))
 
 console.log(__dirname)
-
 
 
 if(process.env.NODE_ENV == 'production') {

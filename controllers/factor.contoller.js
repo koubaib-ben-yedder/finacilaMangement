@@ -4,6 +4,7 @@ const factorUser = require("../models/factorUser.model");
 const role = require("../models/role.model");
 const user = require("../models/user.model");
 const bcryptjs = require("bcryptjs");
+const cloudinary = require('cloudinary').v2;
 exports.getFactor = async (req, res) => {
   try {
     
@@ -100,7 +101,24 @@ exports.addFactor = async (req, res) => {
   try {
     
     console.log(req.file)
-    
+    cloudinary.config({
+      secure: true
+    });
+  
+    const options = {
+      use_filename: true,
+      unique_filename: false,
+      overwrite: true,
+    };
+
+    try {
+      // Upload the image
+      const result = await cloudinary.uploader.upload(req.file.origin, options);
+      console.log(result);
+      return result.public_id;
+    } catch (error) {
+      console.error(error);
+    }
     const factorAdd = new factor({ ...req.body,imageFactor:"" });
     console.log("--");
     await factorAdd.save();
