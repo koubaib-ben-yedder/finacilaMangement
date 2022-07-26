@@ -58,7 +58,7 @@ const User = () => {
 
   useEffect(() => {
     getUser();
-  }, [triggerVariable]);
+  }, []);
   return (
     <div className="user">
       <div className="user-content">
