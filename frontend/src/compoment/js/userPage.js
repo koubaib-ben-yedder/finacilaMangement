@@ -47,10 +47,10 @@ const User = () => {
       };
       localStorage.removeItem("webtoken");
       await axios.delete(window.location.origin + "/user/deleteUser", config);
-
+      navigate("/singup");
       dispatch(trigger());
 
-      navigate("/singup");
+      
     } catch (error) {
       console.error(error);
     }
