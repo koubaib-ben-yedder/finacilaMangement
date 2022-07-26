@@ -88,7 +88,7 @@ const  CustomTable=({del,find,add,update,index,data})=> {
                         <   td>{index}</td>
                             <td>{el.descriptionFactor}</td>
                             <td>{el.client}</td>
-                            <td>  <img   className="customCardY-card-image" src={"http://localhost:5000/static/"+el.imageFactor}/></td>
+                            <td>  {""}</td>
                             <td>{el.dateFactor}</td>
                             <td>{el.valueToPay}</td>
                             <td>{el.remainFactor}</td>
