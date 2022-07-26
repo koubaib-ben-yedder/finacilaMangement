@@ -38,8 +38,9 @@ const FactorForm = ({id,handleClose}) => {
             dataToSend.append("valueToPay",valueToPay)
             dataToSend.append("remainFactor",remainFactor)
             console.log(descriptionFactor,client,dateFactor,valueToPay,remainFactor,imageFactor)
-           const {data}= await axios.post(window.location.origin+"/factor/addFactor",dataToSend,config)
-           
+            const {data}=await axios.post(window.location.origin+"/factor/addFactor",dataToSend,config)
+
+          
             setData(data)
             dispatch(trigger())
             console.log(triggerVaraible)
