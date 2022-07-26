@@ -49,7 +49,7 @@ const Client = () => {
       };
 
       const { data } = await axios.delete(
-        window.location.origins + "/client/deleteClient/" + id,
+        window.location.origin + "/client/deleteClient/" + id,
         config
       );
 
