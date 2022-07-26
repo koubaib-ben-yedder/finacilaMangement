@@ -28,5 +28,6 @@
 .accordion-collapse.collapse.show {
     overflow-y: scroll;
     min-width: 40rem;
+    height: 18rem;
 
 }

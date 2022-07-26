@@ -26,6 +26,8 @@ const Login = () => {
         config
       );
 
+      
+
       localStorage.setItem("webtoken", data?.msg);
 
       navigate("/");
