@@ -21,7 +21,7 @@ const User = () => {
         },
       };
       const { data, status } = await axios.get(
-        window.location.origin + "/getOneUser",
+      window.location.origin + "/user/getOneUser",
         config
       );
       setData(data);
@@ -58,7 +58,7 @@ const User = () => {
 
   useEffect(() => {
     getUser();
-  }, []);
+  }, [triggerVariable]);
   return (
     <div className="user">
       <div className="user-content">
