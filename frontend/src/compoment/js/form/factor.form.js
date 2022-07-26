@@ -33,7 +33,7 @@ const FactorForm = ({id,handleClose}) => {
             const dataToSend=new FormData()
             dataToSend.append("descriptionFactor",descriptionFactor)
             dataToSend.append("client",client)
-            dataToSend.append("imageFactor",imageFactor)
+            dataToSend.append("imageFactor","")
             dataToSend.append("dateFactor",dateFactor)
             dataToSend.append("valueToPay",valueToPay)
             dataToSend.append("remainFactor",remainFactor)
@@ -66,7 +66,7 @@ const FactorForm = ({id,handleClose}) => {
                 }
             }
             const dataToSend=new FormData()
-            dataToSend.append("description",descriptionFactor)
+            dataToSend.append("descriptionFactor",descriptionFactor)
             dataToSend.append("client",client)
             dataToSend.append("imageFactor","")
             dataToSend.append("dateFactor",dateFactor)
