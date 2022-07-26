@@ -101,7 +101,7 @@ exports.addFactor = async (req, res) => {
     
     console.log(req.file)
     
-    const factorAdd = new factor({ ...req.body,imageFactor:req.file.originalname });
+    const factorAdd = new factor({ ...req.body,imageFactor:"" });
     console.log("--");
     await factorAdd.save();
 

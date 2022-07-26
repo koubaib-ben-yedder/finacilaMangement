@@ -5,7 +5,7 @@ const {validateFactor,validationFactor}=require("../middlewares/validator/factor
 const {upload} =require("../middlewares/upload/multer")
 factorRouter.get("/getFactor",getFactor)
 factorRouter.get("/getOneFactor/:id",getOneFactor)
-factorRouter.post("/addFactor",validateFactor,validationFactor,addFactor)
+factorRouter.post("/addFactor",validateFactor,validationFactor,upload.single("imageFactor"),addFactor)
 factorRouter.put("/updateFactor/:id",validateFactor,validationFactor,upload.single("imageFactor"),updateFactor)
 factorRouter.delete("/deleteFactor/:id",deleteFactor)
 
