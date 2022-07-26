@@ -21,7 +21,7 @@ const User = () => {
         },
       };
       const { data, status } = await axios.get(
-        "" + window.location.origin + "/getOneUser",
+        window.location.origin + "/getOneUser",
         config
       );
       setData(data);
