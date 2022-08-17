@@ -8,6 +8,6 @@ const publicRouter=express.Router()
 
 publicRouter.post("/login",validateLogin,validationLogin,login)
 publicRouter.post("/addUser",validateUser,validationUser,addUser)
-  
+console.log("---")
 
 module.exports=publicRouter
