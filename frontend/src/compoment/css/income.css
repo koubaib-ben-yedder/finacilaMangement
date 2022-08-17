@@ -1,3 +1,11 @@
 .income {
     margin: 5rem 1rem;
 }
+.income-content-search{
+    position: fixed;
+    bottom: 3rem;
+    right: 1rem;
+    gap: 2rem;
+    display: flex;
+    z-index: 1;
+  }

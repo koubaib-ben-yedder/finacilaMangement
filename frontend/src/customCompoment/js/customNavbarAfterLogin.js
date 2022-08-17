@@ -1,8 +1,8 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import {useNavigate,Link} from "react-router-dom"
-import {useDispatch,useSelector} from "react-redux"
+import {useNavigate} from "react-router-dom"
+import {useDispatch} from "react-redux"
 import {display} from "../../redux/action"
 import "../css/customNavbar.css"
 function CustomNavbarAfterLogin() {
@@ -16,10 +16,13 @@ function CustomNavbarAfterLogin() {
     <div className="CustomNavbar">
      
      
-      <Navbar bg="primary" variant="dark">s
+      <Navbar bg="primary" variant="dark">
         <Container>
-          <Navbar.Brand onClick={()=>navigate("/")}>Home</Navbar.Brand>
+       
           <Nav className="me-auto">
+           <img className="customNavbar-icon" src="/favicon.ico" />
+
+            <Nav.Link  onClick={()=>navigate("/")} >Dashbord</Nav.Link>
             <Nav.Link onClick={()=>navigate("/edit")} onDoubleClick={()=> dispatch(display({show:true,page:"Edit"}))}>Edit</Nav.Link>
             <Nav.Link onClick={()=>navigate("/factor")}>Factor</Nav.Link>
             <Nav.Link onClick={()=>navigate("/income")}>Income</Nav.Link>

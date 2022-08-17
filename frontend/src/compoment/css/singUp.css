@@ -4,7 +4,7 @@
     justify-content: end;
     background: url("../../image/singup.jpg")  ;
     background-size:cover;
-    height:42rem;
+    height:100%;
    
 
   
@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 10rem;
+    padding: 7rem 10rem;  
     gap: 1rem;
 }
 .singUp-content-footer{

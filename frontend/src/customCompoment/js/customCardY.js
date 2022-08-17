@@ -1,17 +1,18 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import { useSelector } from 'react-redux';
 import "../css/customCardY.css"
-const CustomCardY=({data})=> {
-    const list=["1","2","3","4","5","6","7"]
+const CustomCardY=({data,filter})=> {
+
+  
+    const {imageUrl}=useSelector((state)=>state)
     
     return (
     <div >
     
-      {Array.isArray(data)?data?.map((el,idx) => (
+      {Array.isArray(data)?data?.filter((el)=>Object.values(el).join().indexOf(filter)!=-1?el:"").map((el,index)=>(
         
-          <Card>
+          <Card key={index}>
             <Card.Body>
               
               <div className="customCardY-card-body">
@@ -35,7 +36,8 @@ const CustomCardY=({data})=> {
                       </Card.Text>
                     </div>
                     <div className="customCardY-card-body-image">
-                      <img   className="customCardY-card-image" src={"http://localhost:5000/static/"+el.imageFactor}/>
+                  
+                      <img   className="customCardY-card-image" src={imageUrl+"/"+el.imageFactor} onClick={()=>window.location.href=imageUrl+"/"+el.imageFactor}/>
                   </div>
                 </div>
             </Card.Body>

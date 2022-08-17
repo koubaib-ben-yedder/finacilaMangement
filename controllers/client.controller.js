@@ -9,11 +9,20 @@ exports.getClient = async (req, res) => {
   try {
     //grap authorization token from request to give a personalization data depend of token
     const { email, password } = req;
+
+    const { pageNumber } = req.params;
+
     //extract email from authorization token and test if is valid email adress and ectract passsword for testing
 
     //grap user password from user collection for test her validation
 
     const userOne = await user.findOne({ email: email });
+
+    console.log(userOne);
+
+    const userOneRole = await role.findOne({ _id: userOne.role });
+
+    console.log("--------------", userOneRole.role);
 
     //check if user password is valid or not
 
@@ -28,44 +37,92 @@ exports.getClient = async (req, res) => {
       return res.status(400).send({ msg: "email not found" });
     }
 
-    //grap  client data by user id
+    if (userOneRole.role.includes("User")) {
+      //grap  client data by user id
 
-    const clientUserAll = await clientUser.find({ user: userOne._id });
+      const clientUserAll = await clientUser.find({ user: userOne._id });
 
-    //grap client to be filtred by client id
-    const clientAll = await client.find();
+      //grap client to be filtred by client id
+      const clientAll = await client
+        .find()
+        .select("-createdAt")
+        .select("-updatedAt");
 
-    console.log(clientUserAll, clientAll);
+      let clientTable = [];
 
-    let clientTable = [];
+      //test  if have relaction or not
 
-    //test  if have relaction or not
-
-  
       clientUserAll.map((el1) => {
         clientAll.map((el2) => {
-          console.log(el1.client.toString() == el2._id.toString());
-
           if (el1.client.toString() == el2._id.toString()) {
             clientTable = [...clientTable, el2];
           }
         });
       });
 
-      console.log(clientTable);
+      // test if you have a client or notS
 
-      // test if you have a client or not
-
-      
       // test if data exist before sending
-      if(clientTable.length!=0){
-          // send data to the frontend
-        return res.status(200).send(clientTable);
-      }
-      else {
-      //send error message to the fontend
+      if (clientTable.length != 0) {
+        // send data to the frontend
+        let sliceToDisplay = [];
+        if (clientTable.length != 0) {
+          if (pageNumber == 1) {
+            clientTable.map((el, index) => {
+              if (0 <= index && index <= 9) {
+                sliceToDisplay = [...sliceToDisplay, el];
+              }
+            });
+          } else {
+            clientTable.map((el, index) => {
+              if (
+                (pageNumber - 1) * 10 + 1 <= index &&
+                index <= 10 * pageNumber
+              ) {
+                sliceToDisplay = [...sliceToDisplay, el];
+              }
+            });
+          }
+        }
+        return res.status(200).send(sliceToDisplay);
+      } else {
+        //send error message to the fontend server
 
-      return res.status(200).send({ msg: "client is empty" });
+        return res.status(400).send({ msg: "client is empty" });
+      }
+    } else {
+      const clientOne = await client
+        .find()
+        .select("-createdAt")
+        .select("-updatedAt");
+
+      if (clientOne.length != 0) {
+        // send data to the frontend
+        let sliceToDisplay = [];
+
+        if (pageNumber == 1) {
+          clientOne.map((el, index) => {
+            if (0 <= index && index <= 9) {
+              sliceToDisplay = [...sliceToDisplay, el];
+            }
+          });
+        } else {
+          clientOne.map((el, index) => {
+            if (
+              (pageNumber - 1) * 10 + 1 <= index &&
+              index <= 10 * pageNumber
+            ) {
+              sliceToDisplay = [...sliceToDisplay, el];
+            }
+          });
+        }
+
+        return res.status(200).send(sliceToDisplay);
+      } else {
+        //send error message to the fontend server
+
+        return res.status(400).send({ msg: "client is empty" });
+      }
     }
   } catch (error) {
     //send a server error message
@@ -108,6 +165,13 @@ exports.deleteClient = async (req, res) => {
     //test if id is valid or not
 
     if (mongoose.Types.ObjectId.isValid(id)) {
+      const clientOne = await client.findOne({ _id: id });
+
+      console.log("-------------------------", clientOne);
+
+      if (!clientOne) {
+        return res.status(400).send({ msg: "id dosent exist" });
+      }
       //delete by id client
 
       await client.findByIdAndDelete(id);
@@ -127,12 +191,16 @@ exports.deleteClient = async (req, res) => {
 
 exports.updateClient = async (req, res) => {
   try {
-    console.log("--");
     //grap id from client request
 
     const { id } = req.params;
 
     if (mongoose.Types.ObjectId.isValid(id)) {
+      const clientOne = await client.findOne({ _id: id });
+
+      if (!clientOne) {
+        return res.status(400).send({ msg: "id dosent exist" });
+      }
       // update clinet by id
       await client.updateOne({ _id: id }, req.body);
       // send a validation message to fontend
@@ -147,12 +215,9 @@ exports.updateClient = async (req, res) => {
 
 exports.addClient = async (req, res) => {
   try {
-    console.log(req.body);
-
     // grap email and password  from request client
     const { email, password } = req;
 
-    console.log(email);
     // grap user data by email for test if user exist **
 
     const userOne = await user.findOne({ email: email });
@@ -160,9 +225,10 @@ exports.addClient = async (req, res) => {
     //test if user exist or
 
     if (!userOne) {
+      console.log("------------------------", userOne);
       //send a error message to the frontend
 
-      return res.statust(400).send({ msg: "email not found" });
+      return res.status(400).send({ msg: "email not found" });
     }
     //compare password  from a client request to user password already save it in datebase if user exist
 
@@ -181,7 +247,7 @@ exports.addClient = async (req, res) => {
     // take the first collection
 
     const clientId = (await client.find()).reverse()[0];
-    console.log("---");
+
     // make a relaction
     const clientUserAdd = new clientUser({
       client: clientId._id,

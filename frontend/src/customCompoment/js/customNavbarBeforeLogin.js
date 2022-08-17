@@ -1,13 +1,14 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import {useNavigate,Link} from "react-router-dom"
-import {useDispatch,useSelector} from "react-redux"
-import {display} from "../../redux/action"
+import {useNavigate} from "react-router-dom"
+import {useDispatch} from "react-redux"
+
 import "../css/customNavbar.css"
+ 
 function CustomNavbarBeforeLogin() {
   
-    const dispatch=useDispatch();
+ 
     
     const navigate=useNavigate()
 
@@ -20,8 +21,11 @@ function CustomNavbarBeforeLogin() {
         <Container>
         
           <Nav className="me-auto">
-        
-            <Nav.Link onClick={()=>navigate("/singup")}>Singup</Nav.Link>
+            
+          <img className="customNavbar-icon" src="/favicon.ico" type="image/x-icon"></img>
+
+            <Nav.Link onClick={()=>navigate("/")}>Home</Nav.Link>
+            <Nav.Link onClick={()=>navigate("/singup")}>Sing up</Nav.Link>
             <Nav.Link onClick={()=>navigate("/login")}>Login</Nav.Link>
        
             {/* <Link to="/factor">Factor</Link>

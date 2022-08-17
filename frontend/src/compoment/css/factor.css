@@ -1,3 +1,9 @@
 .factor {
     margin: 5rem 1rem;
 }
+.factor-content-search{
+  
+    position:fixed;
+    bottom: 2rem;
+    right: 2rem;
+  }

@@ -26,3 +26,13 @@ navbar-dark .navbar-brand {
 .navbar-dark .navbar-brand {
     color: #F2D7D9;
 }
+.customNavbar-icon{
+
+    width: 3rem;
+    height: 3rem;
+    margin-right: 3rem;
+}
+
+.container {
+    margin-left: 0.4rem!important;
+}

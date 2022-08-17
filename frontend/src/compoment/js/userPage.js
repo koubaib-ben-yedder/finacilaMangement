@@ -1,18 +1,24 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../css/userPage.css";
 import { useDispatch, useSelector } from "react-redux";
-import { display, trigger } from "../../redux/action";
+import { display, errorHandler, trigger,notification } from "../../redux/action";
 import CustomModal from "../../customCompoment/js/customModal";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import gsap from "gsap";
+
 const User = () => {
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
+  const { pageUrl } = useSelector((state) => state);
   const [id, setId] = useState(-1);
+
   const navigate = useNavigate();
-
+  const anim=useRef(null)
   const triggerVariable = useSelector((state) => state.tigger);
-
+  const {errorGroup} =useSelector((state) => state.error);
+ 
+  
   const getUser = async () => {
     try {
       const config = {
@@ -21,16 +27,40 @@ const User = () => {
         },
       };
       const { data, status } = await axios.get(
-      window.location.origin + "/user/getOneUser",
+        pageUrl + "/user/getOneUser",
         config
       );
+      console.log(data, pageUrl);
+      dispatch(notification({errorNot:data.msg,status:status}))
+
       setData(data);
     } catch (error) {
-      console.log(error);
+      const {response}=error
+      if (response.status == 400 && Object.keys(response.data).includes("error")) {
+        dispatch(errorHandler({ error: [] }));      
+        dispatch(errorHandler(response.data));
+       }else{
+      
+        if (response.data.msg!=undefined){
+          alert(response.data.msg)
+          if(response.status == 400 && Object.keys(response.data).includes("msg") ){
+            dispatch(errorHandler({ error: [] }));      
+
+            dispatch(notification({errorNot:response.data.msg,errorGroup:response.data.msg,status:response.status}))
+
+
+
+          }
+          console.log(error)
+        }
+      }
+      
     }
   };
   const update = (id) => {
     console.log("update factor");
+     dispatch(errorHandler({ error: [] }));
+    
     dispatch(display({ show: true, page: "User" }));
     setId(id);
   };
@@ -46,22 +76,43 @@ const User = () => {
         },
       };
       localStorage.removeItem("webtoken");
-      await axios.delete(window.location.origin + "/user/deleteUser", config);
-      navigate("/singup");
-      dispatch(trigger());
+      const {data,status}=await axios.delete(pageUrl + "/user/deleteUser", config);
+      dispatch(notification({errorNot:data.msg,status:status}))
 
-      
+      navigate("/");
+     
     } catch (error) {
+      const {response}=error
+    
+        if(response.status == 400 && Object.keys(response.data).includes("msg") ){
+
+          dispatch(notification({error:response.data.msg,status:response.status}))
+
+
+
+        }
+      
       console.error(error);
     }
   };
 
   useEffect(() => {
     getUser();
-  }, [triggerVariable]);
+    
+  }, [triggerVariable, pageUrl]);
+
+
+  useEffect(() => {
+    dispatch(errorHandler({ error: [] }));
+  
+
+  }, [pageUrl]);
+
   return (
     <div className="user">
+     
       <div className="user-content">
+     
         <div className="user-content-firstName">
           <label>firstName:</label>
           {data?.firstName}

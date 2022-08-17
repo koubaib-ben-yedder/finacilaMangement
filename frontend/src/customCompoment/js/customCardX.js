@@ -1,16 +1,15 @@
 import React from 'react'
 import {CardGroup,Card} from "react-bootstrap"
-const customCardX = ({data}) => {
+const customCardX = ({data,filter}) => {
 
-  const list=["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]
   return (
     <div >
       
       
       
-        {Array.isArray(data)?data?.map((el)=>(
+        {Array.isArray(data)?data?.filter((el)=>Object.values(el).join().indexOf(filter)!=-1?el:"").map((el,index)=>(
           <CardGroup>
-           <Card>
+           <Card key={index}>
           
            <Card.Body>
            

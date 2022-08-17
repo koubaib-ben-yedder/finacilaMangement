@@ -1,20 +1,16 @@
-import { Modal } from 'react-bootstrap';
+
 import Table from 'react-bootstrap/Table';
-import { display } from '../../redux/action';
+
 import "../css/customTable.css"
-import CustomModal from './customModal';
-import { useDispatch,useSelector } from 'react-redux';
-import { useEffect } from 'react';
-const  CustomTable=({del,find,add,update,index,data})=> {
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+const  CustomTable=({del,find,add,update,index,data,filter})=> {
 
-    const list=["1","2","3","4","5","6","7","8","9","10","11"]
-    
-   const {show}=useSelector((state)=>state)
-  
-    
-    const dispatch=useDispatch()
+    const {imageUrl}=useSelector((state)=>state)
+    console.log(imageUrl)
+    const navigate=useNavigate()
 
-    console.log(data)
+    console.log(data,filter)
     
     
   
@@ -40,13 +36,15 @@ const  CustomTable=({del,find,add,update,index,data})=> {
                         </tr>
                     </thead>
                     <tbody>
-                        {Array.isArray(data)?data?.map((el,index)=>(
+                       
+                        {Array.isArray(data)?filter!=""?data?.filter((el)=>Object.values(el).join().indexOf(filter)!=-1?el:"").map((el,index)=>(
                     
                 
 
-                        
+                         
                             <tr>
                                 <td>{index}</td>
+                                {console.log(Object.values(el).join().indexOf(filter)!=-1)}
                                 <td>{el.nameIncome}</td>
                                 <td>{el.descriptionIncome}</td>
                                 <td>{el.dateIncome}</td>
@@ -57,6 +55,18 @@ const  CustomTable=({del,find,add,update,index,data})=> {
                             </tr>
                          
 
+                        )):data?.map((el,index)=>(
+                            <tr>
+                                <td>{index}</td>
+                                <td>{el.nameIncome}</td>
+                                <td>{el.descriptionIncome}</td>
+                                <td>{el.dateIncome}</td>
+                                <td>{el.manyToHave}</td>
+                                <td>{el.remainIncome}</td>
+                                <td className="icon"><i class="fas fa-plus-circle" onClick={()=>add()}></i><i class="fas fa-trash-alt" onClick={async(e)=>{await del(e,el._id)}} ></i><i class="fas fa-pen" onClick={async(e)=>await update(el._id,e)}></i><i class="fas fa-eye" onClick={async(e)=>await find(e,el._id)}></i></td>
+                        
+                            </tr>
+                     
                         )):""}
    
                      </tbody>
@@ -80,15 +90,17 @@ const  CustomTable=({del,find,add,update,index,data})=> {
 
                     </thead>
 
-                    {Array.isArray(data)?data?.map((el,index)=>(
+                    {Array.isArray(data)?filter!=""?data?.filter((el)=>Object.values(el).join().indexOf(filter)!=-1?el:"").map((el,index)=>(
 
                         
                     <tbody>
                         <tr>
                         <   td>{index}</td>
+                            {console.log(imageUrl+"/"+el.imageFactor)}
+                            {console.log(Object.values(el).join().indexOf(filter)!=-1)}
                             <td>{el.descriptionFactor}</td>
                             <td>{el.client}</td>
-                            <td>  {""}</td>
+                            <td >     <img  className="customTable-content-column-image" src={imageUrl+"/"+el.imageFactor} onClick={()=>{window.location.href=imageUrl+"/"+el.imageFactor}}/></td>
                             <td>{el.dateFactor}</td>
                             <td>{el.valueToPay}</td>
                             <td>{el.remainFactor}</td>
@@ -99,6 +111,25 @@ const  CustomTable=({del,find,add,update,index,data})=> {
                     </tbody>
 
                         
+                    )):data?.map((el,index)=>(
+                        <tbody>
+                        <tr>
+                        <   td>{index}</td>
+                            {console.log(imageUrl+"/"+el.imageFactor)}
+                            {console.log(Object.values(el).join().indexOf(filter)!=-1)}
+                            <td>{el.descriptionFactor}</td>
+                            <td>{el.client}</td>
+                            <td >     <img  className="customTable-content-column-image" src={imageUrl+"/"+el.imageFactor } onClick={()=>window.location.href=imageUrl+"/"+el.imageFactor}/></td>
+                            <td>{el.dateFactor}</td>
+                            <td>{el.valueToPay}</td>
+                            <td>{el.remainFactor}</td>
+                            <td className="icon"><i class="fas fa-plus-circle" onClick={()=>add()}></i><i class="fas fa-trash-alt" onClick={async(e)=>await del(e,el._id)} ></i><i class="fas fa-pen" onClick={async(e)=>await update(el._id)}></i><i class="fas fa-eye" onClick={async(e)=>await find(e,el._id)}></i></td>
+                    
+                        </tr>
+                
+                    </tbody>
+
+                 
                     )):""}
             
             

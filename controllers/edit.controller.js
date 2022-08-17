@@ -13,48 +13,34 @@ exports.getEdit = async (req, res) => {
 
     const userOne = await user.findOne({ email: email });
 
-    //check if user is exist or not 
+    //check if user is exist or not
 
     if (!userOne) {
-      console.log(email);
-      //send error response if user doesn't exist 
+      //send error response if user doesn't exist
       return res.statust(400).send({ msg: "email not found" });
-
     }
 
-    // check if pzssword is coorect or not  by user 
+    // check if pzssword is coorect or not  by user
     if (!bcryptjs.compareSync(password, userOne.password)) {
       return res.statust(400).send({ msg: "password in correct" });
     }
 
     const editUserAll = await editUser.find({ user: userOne.id });
 
- 
     const editAll = await edit.find({});
 
-    console.log(editAll);
     let editTable = [];
 
-  
-      editUserAll.map((el1) => {
-        console.log("-------", el1.edit.toString());
-        editAll.map((el2) => {
-          console.log("-------", el2._id.toString());
-          console.log(
-            el1.edit.toString(),
-            el2._id.toString(),
-            el1.edit.toString() == el2._id.toString()
-          );
-          if (el1.edit.toString() == el2._id.toString()) {
-            editTable = [...editTable, el2];
-          }
-        });
+    editUserAll.map((el1) => {
+      editAll.map((el2) => {
+        if (el1.edit.toString() == el2._id.toString()) {
+          editTable = [...editTable, el2];
+        }
       });
-      if(editTable.length!=0){
-        return res.status(200).send(editTable );
-      }
-   
-     else {
+    });
+    if (editTable.length != 0) {
+      return res.status(200).send(editTable);
+    } else {
       return res.status(200).send({ msg: "edit is empty" });
     }
   } catch (error) {
@@ -79,7 +65,7 @@ exports.getOneEdit = async (req, res) => {
         return res.status(400).send({ msg: "name edit dosen't exist" });
       }
 
-      return res.status(200).send(oneEdit );
+      return res.status(200).send(oneEdit);
     }
   } catch (error) {
     return res.status(500).send(error);
@@ -93,20 +79,13 @@ exports.deleteEdit = async (req, res) => {
     if (mongoose.Types.ObjectId.isValid(id)) {
       const editOne = await edit.findOne({ _id: id });
 
-      console.log(editOne);
-
       if (!editId) {
         return res.status(400).send({ msg: "name edit dosen't exist" });
       }
 
       await edit.findByIdAndDelete(editOne._id);
-      
-      
-      await editUser.findOneAndDelete({edit:editOne._id})
 
-
-
-
+      await editUser.findOneAndDelete({ edit: editOne._id });
 
       return res.status(200).send({ msg: "deleat with suceess" });
     }
@@ -130,10 +109,8 @@ exports.addEdit = async (req, res) => {
     await addOneEdit.save();
 
     const findSecondeEdit = await edit.findOne({ nameEdit: nameEdit });
-    console.log(findSecondeEdit);
-    const { email, password } = req;
 
-    console.log(email);
+    const { email, password } = req;
 
     const userOne = await user.findOne({ email: email });
 
@@ -144,8 +121,6 @@ exports.addEdit = async (req, res) => {
     if (!bcryptjs.compareSync(password, userOne.password)) {
       return res.statust(400).send({ msg: "password in correct" });
     }
-
-    console.log("--", userOne, findSecondeEdit);
 
     const addEditUser = new editUser({
       edit: findSecondeEdit._id,

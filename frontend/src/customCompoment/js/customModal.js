@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { Form } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
+
 import Modal from 'react-bootstrap/Modal';
 import {useDispatch, useSelector } from 'react-redux';
 import {display} from "../../redux/action"
@@ -16,8 +14,8 @@ const CustomModal=({id,oneData,choix,info,update,send})=> {
   
  
   const {show,page}=useSelector((state)=>state)
-  const dispatch=useDispatch()
-
+  const {error}=useSelector((state)=>state)
+  const dispatch= useDispatch()
   console.log(show,page)
   const handleClose = () => {dispatch(display({show:false,page:""}));console.log(show)}
   const HandleShow = () =>{
@@ -35,7 +33,7 @@ const CustomModal=({id,oneData,choix,info,update,send})=> {
 
                 return(
 
-                    <IncomeForm id={id} handleClose={handleClose}  />
+                    <IncomeForm  id={id} handleClose={handleClose}  />
 
                 )
 
@@ -59,7 +57,7 @@ const CustomModal=({id,oneData,choix,info,update,send})=> {
                                         
                                         return(
 
-                                            <ClientForm id={id} handleClose={handleClose}/>
+                                            <ClientForm  id={id} handleClose={handleClose}/>
                                         )
 
                                         
@@ -68,7 +66,7 @@ const CustomModal=({id,oneData,choix,info,update,send})=> {
                                         if(page=="View"){
                                             return(
                                                 
-                                                <ViewForm oneData={oneData} view={choix} handleClose={handleClose} />
+                                                <ViewForm  oneData={oneData} view={choix} handleClose={handleClose} />
                                             )
     
                                           

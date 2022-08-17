@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Card, Modal } from 'react-bootstrap'
+import { Button, Modal } from 'react-bootstrap'
 
 const InfoForm = ({infoType,handleClose}) => {
   return (

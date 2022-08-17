@@ -1,6 +1,6 @@
 const user=require("../models/user.model")
 const role=require("../models/role.model")
-
+const bcryptjs=require("bcryptjs")
 const setup=async()=>{
     
 
@@ -10,7 +10,7 @@ const setup=async()=>{
 
         if (roleData.length==0){
 
-           await role.insertMany([{role:"Admin"},{role:"Gestionnaire"},{role:"User"}])
+           await role.insertMany([{role:"Admin"},{role:"Gestionnaire"},{role:"Basic User"},{role:"Intermedia User"},{role:"Expert User"}])
         }
         const adminId=await role.findOne({role:"Admin"})
 
@@ -27,7 +27,7 @@ const setup=async()=>{
                 lastName:"Admin",
                 age:"30",
                 email:"Admin@gamail.com",
-                password:"Admin",
+                password:bcryptjs.hashSync("Admin1998A/",10),
                 role:adminId._id        
 
             })

@@ -7,11 +7,13 @@ exports.authentication=async(req,res,next)=>{
     try {
         const {authorization}=req.headers
       
-        const decode=jwt.verify(authorization,process.env.webtokenkey)
+        const decode=jwt.verify(authorization,process.env.WEB_TOKEN_KEY)
+        console.log(decode,authorization,process.env.WEB_TOKEN_KEY)
         req.password=decode.password
         req.email=decode.email
 
         
+      
         const userOne=await user.findOne({email:decode.email,password:decode.password})
         next()
         if(userOne){

@@ -1,3 +1,6 @@
 export const show="SHOW"
 export const tableTrigger="TABLETRIGGER"
 export const notif="NOTIF"
+export const url="URL"
+export const error="ERROR"
+export const filter="FILTER"
