@@ -8,4 +8,4 @@ editRouter.get("/getEdit",getEdit)
 editRouter.delete("/deleteEdit/:id",deleteEdit)
 editRouter.put("/updateEdit/:id",validateEdit,validationEdit,updateEdit)
 
-module.exports=editRouter
+module.exports=editRouter   
