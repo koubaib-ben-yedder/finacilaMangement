@@ -4,7 +4,7 @@ const {getIncome,getOneIncome,deleteIncome,updateIncome,addIncome}=require("../c
 const {validateIcome,validationIcome}=require("../middlewares/validator/income.validater")
 const {upload} =require("../middlewares/upload/multer")
 
-incomeRouter.get("/getIncome",getIncome)
+incomeRouter.get("/getIncome/:pageNumber",getIncome)
 incomeRouter.get("/getOneIncome/:id",getOneIncome)
 incomeRouter.post("/addIncome",validateIcome,validationIcome,addIncome)
 incomeRouter.delete("/deleteIncome/:id",deleteIncome)
