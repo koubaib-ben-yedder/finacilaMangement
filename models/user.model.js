@@ -7,7 +7,8 @@ const userSchema=mongoose.Schema({
     age:{type:Number,require:true},
     email:{type:String,require:true},
     password:{type:String,require:true},
-    role:{type:mongoose.Types.ObjectId,require:true,ref:"role"}
+    role:{type:mongoose.Types.ObjectId,require:true,ref:"role"},
+    value:{type:String,require:true}
 },{
     timeStamp:true,
 })
