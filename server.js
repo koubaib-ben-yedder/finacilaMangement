@@ -10,13 +10,14 @@ const incomeRouter=require("./routes/income.router")
 const clientRouter=require("./routes/client.router")
 const userRouter=require("./routes/user.router")
 const publicRouter=require("./routes/public.router")
+const urlRouter=require("./routes/url.router")
 const {authentication}=require("./middlewares/authentication/authentication")
 const connect=require("./connect/connectDb")
 const setup=require("./connect/setup")
 app.use(express.json())
 connect()
 setup()
-const port=process.env.port||8000
+const port=process.env.PORT||8000
 
 app.use(cors())
 app.use("/edit",authentication,editRouter)
@@ -24,6 +25,7 @@ app.use("/factor",authentication,factorRouter)
 app.use("/income",authentication,incomeRouter)
 app.use("/client",authentication,clientRouter)
 app.use("/user",authentication,userRouter)
+app.use("/baseUrl",urlRouter)
 app.use("",publicRouter)
 app.set("port", port);
 app.use('/static', express.static(path.join(__dirname, 'images')))
@@ -41,6 +43,8 @@ if(process.env.NODE_ENV == 'production') {
         console.log("----")
         res.sendFile(path.resolve(__dirname, 'frontend','build', 'index.html'));
     })
+    
+   
 }
 
 
