@@ -8,11 +8,9 @@ exports.getIncome = async (req, res) => {
   try {
     const { email, password } = req;
 
-    const { pageNumber } = req.params;
+    const { pageNumber,dateNumber } = req.params;
 
-    console.log("1");
 
-    console.log(pageNumber);
 
     const userOne = await user.findOne({ email: email });
 
@@ -29,7 +27,6 @@ exports.getIncome = async (req, res) => {
     const incomeOneRole = await role.findOne({ _id: userOne.role });
 
     
-    console.log("-------",incomeOneRole.role)
 
     if (incomeOneRole.role.includes("User")) {
       const incomeAll = await income
@@ -66,7 +63,6 @@ exports.getIncome = async (req, res) => {
             }
           });
         }
-        console.log(sliceToDisplay, pageNumber);
 
         return res.status(200).send(sliceToDisplay);
       } else {
