@@ -18,11 +18,9 @@ exports.getClient = async (req, res) => {
 
     const userOne = await user.findOne({ email: email });
 
-    console.log(userOne);
 
     const userOneRole = await role.findOne({ _id: userOne.role });
 
-    console.log("--------------", userOneRole.role);
 
     //check if user password is valid or not
 
@@ -167,7 +165,6 @@ exports.deleteClient = async (req, res) => {
     if (mongoose.Types.ObjectId.isValid(id)) {
       const clientOne = await client.findOne({ _id: id });
 
-      console.log("-------------------------", clientOne);
 
       if (!clientOne) {
         return res.status(400).send({ msg: "id dosent exist" });
@@ -225,7 +222,6 @@ exports.addClient = async (req, res) => {
     //test if user exist or
 
     if (!userOne) {
-      console.log("------------------------", userOne);
       //send a error message to the frontend
 
       return res.status(400).send({ msg: "email not found" });
