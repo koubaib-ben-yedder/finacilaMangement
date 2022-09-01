@@ -13,9 +13,11 @@ const factorUser = require("../models/factorUser.model");
 exports.getOneUser = async (req, res) => {
   try {
     const { email } = req;
-    const getUserData = await user.findOne({ email: email }).select("-createdAt").select("-updatedAt");
+    const getUserData = await user
+      .findOne({ email: email })
+      .select("-createdAt")
+      .select("-updatedAt");
 
-    console.log("1")
     if (!getUserData) {
       return res
         .status(400)
@@ -30,7 +32,10 @@ exports.getOneUser = async (req, res) => {
 exports.getUser = async (req, res) => {
   try {
     const { email } = req;
-    const getUserData = await user.findOne({ email: email }).select("-createdAt").select("-updatedAt");
+    const getUserData = await user
+      .findOne({ email: email })
+      .select("-createdAt")
+      .select("-updatedAt");
     const roleOne = await role.findOne({ _id: getUserData.role });
 
     if (!getUserData) {
@@ -40,7 +45,10 @@ exports.getUser = async (req, res) => {
     }
 
     if (roleOne.role == "Admin") {
-      const getAllUsers = await user.find().select("-createdAt").select("-updatedAt");
+      const getAllUsers = await user
+        .find()
+        .select("-createdAt")
+        .select("-updatedAt");
 
       return res.status(200).send(getAllUsers);
     }
@@ -55,10 +63,9 @@ exports.deleteUser = async (req, res) => {
     const { email } = req;
 
     const userOne = await user.findOne({ email: email });
-    
-    if (!userOne){
 
-        return res.status(400).send({msg:"user dosent exit"})
+    if (!userOne) {
+      return res.status(400).send({ msg: "user dosent exit" });
     }
 
     const userIncomeAll = await incomeUser.find({ user: userOne._id });
@@ -142,12 +149,9 @@ exports.addUser = async (req, res) => {
     if (userOne) {
       return res.status(400).send({ msg: "email exist" });
     }
-    console.log("1");
 
     const roleUser = await role.findOne({ role: roleToTest });
 
-    console.log("2");
-    console.log(roleUser);
 
     const addUserData = new user({
       ...req.body,
