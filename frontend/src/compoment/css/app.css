@@ -4,8 +4,54 @@
     
   z-index:1000;
   position: sticky;
+  
 
  
+
+
+}
+
+.qr_code_after_login{
+
+    position: fixed;
+    bottom: 1rem;
+    z-index: 1000;
+    left: 1.1rem;
+    width: 4rem;
+
+}
+
+.qr_code_before_login{
+
+  position: fixed;
+  bottom: 1rem;
+  z-index: 1000;
+  right: 1.1rem;
+  width: 4rem;
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 320px) {
+
+  
+  
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+  
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+  
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
 
 
 }
