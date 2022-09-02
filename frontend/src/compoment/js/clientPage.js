@@ -32,7 +32,7 @@ const Client = ({ place }) => {
         config
       );
       dispatch(notification({errorNot:data.msg,status:status}))
-
+   
       setData(data);
     } catch (error) {
       const { response } = error;
