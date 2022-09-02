@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { Button, Card } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import "../css/customAlert.css"
-const CustomAlert = () => {
+import {animated} from "react-spring"
+const CustomAlert = ({spring}) => {
   const {errorNot,status,errorGroup}=useSelector((state)=>state)
   const [array,setArray]=useState([])
     console.log("-------------",errorNot,status,window.location.pathname,errorGroup,useSelector((state)=>state))
@@ -30,7 +31,7 @@ const CustomAlert = () => {
         if (errorGroup.length!=0 || errorNot.length!=0){
           
           return (
-            <div className="customAlert">
+            <animated.div style={spring} className="customAlert">
               <Card
                   bg={status==200?"success":status==400?"danger":status==500?"info":""}
                   key={"danger"} 
@@ -49,7 +50,7 @@ const CustomAlert = () => {
                     </Card.Text>
                   </Card.Body>
                 </Card>
-            </div>
+            </animated.div>
           )
 
         }
