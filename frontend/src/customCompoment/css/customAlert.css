@@ -1,9 +1,13 @@
 .customAlert{
-    width:20rem;
+    width:17rem;
     height:10rem;
     position:fixed;
     bottom:10rem;
     right:5rem;
     z-index:100;
 
+}
+.modal-backdrop {
+
+    background-color:#00000000 !important;
 }
