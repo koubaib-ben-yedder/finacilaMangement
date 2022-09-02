@@ -44,7 +44,7 @@ const Income = () => {
 
       setData(data);
       dispatch(notification({errorNot:data.msg,status:status}))
-
+    
     } catch (error) {
       const { response } = error;
 
