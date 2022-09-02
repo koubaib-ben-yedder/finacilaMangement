@@ -7,12 +7,15 @@ import { Accordion, Form, InputGroup } from "react-bootstrap";
 import Client from "./clientPage";
 import "../css/mainPage.css";
 import axios from "axios";
-import { errorHandler, filterData, notification } from "../../redux/action";
+import { BsFillAlarmFill } from 'react-icons/bs';
+
+import { errorHandler, filterData, notification, trigger } from "../../redux/action";
 
 const Main = () => {
   const [factor, setFactor] = useState("");
   const [income, setIncome] = useState("");
   const [client, setClient] = useState("");
+  const [dateNumber,setDateNumber]=useState(0)
   const dispatch = useDispatch();
   const { pageUrl, pageNumber, findValue, errorGroup } = useSelector(
     (state) => state
@@ -31,7 +34,7 @@ const Main = () => {
         config
       );
       dispatch(notification({errorNot:data.msg,status:status}))
-
+      dispatch(trigger())
       setIncome(data);
     } catch (error) {
       const { response } = error;
@@ -64,7 +67,7 @@ const Main = () => {
         config
       );
       dispatch(notification({errorNot:data.msg,status:status}))
-
+      dispatch(trigger())
       setFactor(data);
     } catch (error) {
       const { response } = error;
@@ -104,18 +107,33 @@ const Main = () => {
   }, [pageUrl]);
 
   return (
-    <div classname="main-page">
+    <div className="main-page">
       <div className="main-page-content">
         <CustomCalendar />
 
         <div className="income-content-search">
           <InputGroup className="mb-3">
             <InputGroup.Text id="basic-addon1">
-              <i class="fa-solid fa-magnifying-glass"></i>
+              
+ 
+         <BsFillAlarmFill />      </InputGroup.Text>
+            <Form.Control
+              placeholder="date:"
+              aria-label="date:"
+              aria-describedby="basic-addon1"
+              onChange={(e) => {
+              setDateNumber(e.target.value)
+              }}
+            />
+          </InputGroup>
+
+          <InputGroup className="mb-3">
+            <InputGroup.Text id="basic-addon1">
+              <i class="fa-solid fa-arrow-up-1-9"></i>
             </InputGroup.Text>
             <Form.Control
-              placeholder="search:"
-              aria-label="search:"
+              placeholder="page number:"
+              aria-label="page number:"
               aria-describedby="basic-addon1"
               onChange={(e) => {
                 dispatch(
@@ -127,7 +145,6 @@ const Main = () => {
               }}
             />
           </InputGroup>
-
           <InputGroup className="mb-3">
             <InputGroup.Text id="basic-addon1">
               <i class="fa-solid fa-arrow-up-1-9"></i>
@@ -153,7 +170,7 @@ const Main = () => {
             <Accordion.Header>Factor To Pay</Accordion.Header>
             <Accordion.Body>
               {factor != undefined ? (
-                <CustomCardY data={factor} filter={findValue} />
+                <CustomCardY data={factor} filter={findValue} dateValue={dateNumber} />
               ) : (
                 ""
               )}
@@ -166,7 +183,7 @@ const Main = () => {
             <Accordion.Header>Income To Have</Accordion.Header>
             <Accordion.Body>
               {income != undefined ? (
-                <CustomCardX data={income} filter={findValue} />
+                <CustomCardX data={income} filter={findValue}  dateValue={dateNumber} />
               ) : (
                 ""
               )}
