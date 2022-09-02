@@ -12,7 +12,7 @@ import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
 
 const CustomCardY = ({ data, filter, dateValue }) => {
   const { imageUrl } = useSelector((state) => state);
-  console.log(dateValue);
+ 
 
   return (
     <div>
