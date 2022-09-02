@@ -5,12 +5,14 @@ import {useNavigate} from "react-router-dom"
 import {useDispatch} from "react-redux"
 import {display} from "../../redux/action"
 import "../css/customNavbar.css"
+
+
 function CustomNavbarAfterLogin() {
-  
+ 
     const dispatch=useDispatch();
     
     const navigate=useNavigate()
-
+   
     
   return (
     <div className="CustomNavbar">
@@ -28,7 +30,7 @@ function CustomNavbarAfterLogin() {
             <Nav.Link onClick={()=>navigate("/income")}>Income</Nav.Link>
             <Nav.Link onClick={()=>navigate("/user")}>User</Nav.Link>
             <Nav.Link onClick={()=>navigate("/client")}>Client</Nav.Link>
-      
+
           
             {/* <Link to="/factor">Factor</Link>
             <Link to="/edit">Edit</Link>
@@ -36,8 +38,10 @@ function CustomNavbarAfterLogin() {
             <Link to="/income">Income</Link>
             <Link to="/who" >Who</Link>
            */}
+        
           </Nav>
         </Container>
+        
       </Navbar>
 
     </div>
