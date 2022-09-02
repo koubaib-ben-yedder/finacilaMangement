@@ -13,7 +13,7 @@ import {
 } from "../../redux/action";
 import { Form, InputGroup } from "react-bootstrap";
 const Income = () => {
-  const list = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"];
+
 
   const [id, setId] = useState(-1);
   const varaibleTrigger = useSelector((state) => state.trigger);
@@ -219,13 +219,7 @@ const Income = () => {
         update={update}
         find={find}
         index={"income"}
-        title={[
-          "Income  name ",
-          "Income description",
-          "Income date",
-          "Many to have",
-          "Income remai",
-        ]}
+        
         data={data}
         filter={findValue}
       />
