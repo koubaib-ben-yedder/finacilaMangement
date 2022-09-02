@@ -5,16 +5,42 @@
 
 }
 
-.customCardY-card-body-image{
-
-    width: 50%;
-}
 
 .customCardY-card-image {
     width: 100% !important;
  
     
     height: 12rem !important;
-    /* height: 58%; */
-    /* background-size: cover; */
+    
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 320px) {
+
+    .customCardY-card-body{
+
+        display:flex;
+        flex-direction: column;
+        gap:2rem;
+    
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+
 }
