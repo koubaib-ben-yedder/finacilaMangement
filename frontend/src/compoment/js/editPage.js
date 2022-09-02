@@ -1,14 +1,10 @@
-
-import CustomModal from '../../customCompoment/js/customModal'
+import CustomModal from "../../customCompoment/js/customModal";
 const Edit = () => {
+  return (
+    <div>
+      <CustomModal />
+    </div>
+  );
+};
 
-  
-
-
-    
-    return (
-    <div><CustomModal/></div>
-  )
-}
-
-export default Edit
+export default Edit;

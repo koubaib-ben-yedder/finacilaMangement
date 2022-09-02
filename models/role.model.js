@@ -2,7 +2,7 @@ const mongoose=require("mongoose")
 
 const roleSchema=mongoose.Schema({
 
-    role:{type:String,require:true}
+    roles:{type:String,require:true}
 },{
     timeStamp:true
 })
