@@ -18,11 +18,7 @@ navbar-dark .navbar-brand {
     
     color: #748DA6!important;
 }
-.CustomNavbar{
-    
-    position: sticky;
-    background:black;
-}
+
 .navbar-dark .navbar-brand {
     color: #F2D7D9;
 }
@@ -34,5 +30,105 @@ navbar-dark .navbar-brand {
 }
 
 .container {
-    margin-left: 0.4rem!important;
+    margin-left: 4.4rem!important;
 }
+
+ /* Small devices (portrait tablets and large phones, 600px and up) */
+ @media only screen and (max-width:320px) {
+
+  
+
+    .me-auto.navbar-nav {
+        display: flex;
+        flex-direction: column!important;
+     
+    }
+    
+    .CustomNavbar {
+        width: 100%;
+    }
+    
+    .container {
+        margin: 0rem!important;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width:321px) and  (max-width: 426px) {
+
+    nav.navbar.navbar-expand.navbar-dark.bg-primary {
+        background: #748DA9!important;
+        width: 36rem !important;
+       
+    }
+    
+    .CustomNavbar {
+        width: 100%;
+    }
+
+    .container {
+        margin-left: 0rem !important;
+    }
+}
+
+
+@media  only screen and (min-width:426px) and  (max-width:768px) {
+
+
+    nav.navbar.navbar-expand.navbar-dark.bg-primary {
+        background: #748DA9!important;
+        width: 48rem !important;
+       
+    }
+    .container {
+        margin-left: 0rem !important;
+    }
+    
+    .CustomNavbar {
+        width: 100%;
+    }
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media  only screen and (min-width:769px) and  (max-width: 1440px) {
+
+
+    nav.navbar.navbar-expand.navbar-dark.bg-primary {
+        background: #748DA9!important;
+        width: 90rem !important;       
+    }
+  
+   .CustomNavbar {
+        width: 100%;
+    }
+    
+    .container {
+        
+        margin-left: 4.4rem!important;
+    }
+}
+
+
+@media all and (min-width:1441px) and (max-width:2560px){
+    
+    nav.navbar.navbar-expand.navbar-dark.bg-primary {
+        background: #748DA9!important;
+        
+        width: 160rem !important;   
+    
+    }
+  
+   .CustomNavbar {
+        width: 100%;
+    }
+    
+    .container {
+        
+        margin-left: 4.4rem!important;
+    }
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
