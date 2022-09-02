@@ -137,7 +137,7 @@ const SingUp = () => {
     <div className="singUp">
     
       <div className="singUp-content">
-        <Form>
+    
           <Form.Group className="mb-3">
             <Form.Label>firstName:</Form.Label>
             <Form.Control
@@ -298,7 +298,7 @@ const SingUp = () => {
               
           
           </Form.Group>
-        </Form>
+      
         <div className="singUp-content-footer">
           <Button
             variant="outline-success"
