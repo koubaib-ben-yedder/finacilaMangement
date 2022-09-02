@@ -21,3 +21,76 @@
     display:flex;
     justify-content:space-evenly;
 }
+
+
+@media all and (min-width:0px)  and (max-width:426px){
+
+    .login-content {
+        max-width: 93%;
+    }
+}
+@media all and (min-width:321px) and (max-width:376px){
+
+    .login {
+      
+   
+        width: 36rem;
+        height: 57rem;
+    
+    }
+}
+
+@media all and (min-width:1441px) and (max-width:2560px){
+
+    .login-content{
+        
+        height: 17%;
+    }
+    .login {
+        
+        height: 127rem;
+    }
+}
+
+@media all and (min-width:1025px) and (max-width:1440px){
+
+
+    .login-content{
+        
+        height: 31%;
+      
+    }
+    
+    .login {
+        
+        height: 68rem;
+    }
+}
+
+
+@media all and (min-width:769px)  and (max-width:1024px){
+
+
+    .login-content{
+        
+        height: 31%;
+    }
+    
+    .login {
+
+        height: 70rem;
+        width: 90rem;        
+    }
+    
+}
+
+@media all and (min-width:376px) and (max-width:426px){
+
+    .login {
+
+        height: 49rem;
+        width: 36rem;
+
+    }
+
+}
