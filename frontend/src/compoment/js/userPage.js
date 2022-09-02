@@ -112,6 +112,7 @@ const User = () => {
     <div className="user">
      
       <div className="user-content">
+        
      
         <div className="user-content-firstName">
           <label>firstName:</label>
@@ -131,16 +132,18 @@ const User = () => {
           <label>email:</label>
           {data?.email}
         </div>
-        <div className="user-content-password">
+        <div className="user-content-password-content">
           {" "}
           <label>password:</label>
-          {data?.password}
+          <div className="user-content-password">{data?.password}</div>
         </div>
-        <div className="user-conetnt-icon">
-          <i class="fas fa-trash-alt" onClick={(e) => del(e, data?._id)}></i>
-          <i class="fas fa-pen" onClick={(e) => update(e, data?._id)}></i>
-          <CustomModal />
-        </div>
+     
+          <div className="user-conetnt-icon">
+            <i class="fas fa-trash-alt" onClick={(e) => del(e, data?._id)}></i>
+            <i class="fas fa-pen" onClick={(e) => update(e, data?._id)}></i>
+          </div>
+            <CustomModal />
+      
       </div>
     </div>
   );
