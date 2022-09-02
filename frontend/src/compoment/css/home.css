@@ -6,3 +6,30 @@
     padding: 1rem;
     border: 1rem #a9b9ce groove;
 }
+
+
+@media all and (min-width:321px) and (max-width:426px){
+
+    .home{
+
+        width: 36rem;
+    
+    }
+}
+
+@media all and (min-width:769px) and (max-width:1024px){
+
+    .home{
+
+        width: 88rem;
+    
+    }
+}
+
+@media all and (min-width:1024px) and (max-width:1440px){
+
+    .home{
+
+        width: 90rem;    
+    }
+}
