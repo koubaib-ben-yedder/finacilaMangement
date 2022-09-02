@@ -46,6 +46,11 @@ const reducer=(state={show:false,page:"",trigger:0,status:0,error:[],errorNot:""
                 
                     
             }   
+
+            return {
+                ...state
+            }  
+        
         
             
         case url:
